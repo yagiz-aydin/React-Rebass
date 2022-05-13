@@ -7,32 +7,33 @@ import { Provider as AuthProvider } from "context/AuthContext";
 import Forbidden from "components/DefaultPages/Forbidden";
 import NotFound from "components/DefaultPages/NotFound";
 import SignIn from "views/SignIn";
+import { PATH, PERMS } from "route/manager";
 
 const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Link to="/profile">Go to Profile</Link>} />
+          <Route path={PATH.HOME} element={<Link to={PATH.PROFILE}>Go to Profile</Link>} />
           <Route
-            path="/profile"
+            path={PATH.PROFILE}
             element={
-              <AuthorizedRoute perm="profilemanagerperm">
+              <AuthorizedRoute perm={PERMS.PROFILE}>
                 <Profile />
               </AuthorizedRoute>
             }
           />
           <Route
-            path="/login"
+            path={PATH.LOGIN}
             element={
               <UnauthRoute>
                 <SignIn />
               </UnauthRoute>
             }
           />
-          <Route path="/403" element={<Forbidden />} />
-          <Route path="/404" element={<NotFound />} />
-          <Route path="*" element={<Navigate to="404" />} />
+          <Route path={PATH["403"]} element={<Forbidden />} />
+          <Route path={PATH["404"]} element={<NotFound />} />
+          <Route path="*" element={<Navigate to={PATH["404"]} />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

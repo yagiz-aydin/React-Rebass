@@ -2,6 +2,7 @@ import Btn from "components/UI/Button";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import TestService from "services/TestServices";
+import { PATH } from "route/manager";
 
 const Profile = () => {
   // const testService = new TestService();
@@ -21,7 +22,7 @@ const Profile = () => {
 
   return (
     <div>
-      <Link to="/">Go to Home</Link>
+      <Link to={PATH.HOME}>Go to Home</Link>
       <Btn></Btn>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { PATH } from "route/manager";
 
 const Home = ({ children }) => {
   const [state, setState] = useState(0);
@@ -13,7 +14,7 @@ const Home = ({ children }) => {
   return (
     <div>
       {children}
-      <Link to="profile/test">Go to Profile</Link>
+      <Link to={PATH.PROFILE}>Go to Profile</Link>
       <button onClick={() => setState(state + 1)}>cOUNTER</button>
     </div>
   );
